@@ -7,20 +7,37 @@
 	"description": "Match sets of words based on commonality or theme.",
 	"scripts": {
 		"start": "mwdk-start",
-		"build": "mwdk-build-prod",
-		"build-dev": "mwdk-build-dev",
-		"lint": "eslint . --fix --config .eslintrc.json"
+		"build": "tsc && mwdk-build-prod",
+		"build-dev": "tsc && mwdk-build-dev",
+		"lint": "eslint . --fix --config .eslintrc.json",
+		"postinstall": "patch-package"
 	},
 	"author": "UCF Center for Distributed Learning",
 	"license": "",
 	"dependencies": {
-		"materia-widget-development-kit": "^3.0.2",
+		"patch-package": "^8.0.0",
 		"raw-loader": "^4.0.2"
 	},
 	"devDependencies": {
+		"@babel/core": "^7.23.2",
+		"@babel/preset-env": "^7.24.1",
+		"@babel/preset-react": "^7.24.1",
+		"@babel/preset-typescript": "^7.24.1",
+		"@eslint/js": "^9.20.0",
+		"@stylistic/eslint-plugin": "^1.7.0",
+		"@types/react": "^18.2.78",
+		"@typescript-eslint/parser": "^7.6.0",
+		"babel-loader": "^9.1.3",
 		"eslint": "^9.6.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-prettier": "^5.1.3",
-		"prettier": "^3.3.2"
+		"eslint-plugin-react": "^7.34.1",
+		"eslint-plugin-react-hooks": "^4.6.0",
+		"globals": "^15.0.0",
+		"materia-widget-development-kit": "^3.0.2",
+		"prettier": "^3.3.2",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"typescript": "^5.4.5"
 	}
 }
