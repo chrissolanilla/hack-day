@@ -1,0 +1,26 @@
+{
+	"name": "associations-materia-widget",
+	"materia": {
+		"cleanName": "associations"
+	},
+	"version": "1.0.0",
+	"description": "Match sets of words based on commonality or theme.",
+	"scripts": {
+		"start": "mwdk-start",
+		"build": "mwdk-build-prod",
+		"build-dev": "mwdk-build-dev",
+		"lint": "eslint . --fix --config .eslintrc.json"
+	},
+	"author": "UCF Center for Distributed Learning",
+	"license": "",
+	"dependencies": {
+		"materia-widget-development-kit": "^3.0.2",
+		"raw-loader": "^4.0.2"
+	},
+	"devDependencies": {
+		"eslint": "^9.6.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-prettier": "^5.1.3",
+		"prettier": "^3.3.2"
+	}
+}

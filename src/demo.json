@@ -1,0 +1,50 @@
+{
+	"name": "Rock Classifications",
+	"qset": {
+		"version": 1,
+		"data": {
+			"items": [
+				{
+					"materiaType": "question",
+					"questions": [{ "text": "Igneous Rocks" }],
+					"type": "connections",
+					"id": 0,
+					"answers": [
+						{
+							"text": ["Quartz","Granite","Basalt","Obsidian"],
+							"value": 100
+						}
+					]
+				},
+				{
+					"materiaType": "question",
+					"type": "connections",
+					"id": 0,
+					"questions": [{ "text": "Sedimentary Rocks" }],
+					"answers": [
+						{
+							"text": ["Sandstone","Limestone","Shale","Breccia"],
+							"value": 100
+						}
+					]
+				},
+				{
+					"materiaType": "question",
+					"id": 0,
+					"questions": [{ "text": "Metamorphic Rocks" }],
+					"type": "connections",
+					"answers": [
+						{
+							"text": ["Marble","Gneiss","Slate","Schist"],
+							"value": 100
+						}
+					]
+				}
+			],
+			"options": {
+				"showAnswers": true,
+				"lives": 3
+			}
+		}
+	}
+}
