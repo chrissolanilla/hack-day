@@ -1,0 +1,60 @@
+.button {
+  all: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 0.05rem transparent;
+  user-select: none;
+  transition: border-color 0.1s, background-color 0.1s;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.translucent {
+  background-color: #ffffff22;
+  border-color: #ffffff22;
+
+  &:hover {
+    border-color: #ffffff44;
+    background-color: #ffffff2b;
+  }
+}
+
+.translucentActive {
+  background-color: #ffffff33;
+  border-color: #ffffff55;
+
+  &:hover {
+    background-color: #ffffff33;
+    border-color: #ffffff55;
+  }
+}
+
+.small {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+}
+
+.medium {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+.fill {
+  flex: 1;
+}
+
+.buttonContents {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+
+  & img {
+    height: 1rem;
+  }
+}

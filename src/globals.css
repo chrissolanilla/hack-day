@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Code Pro', monospace;
+  color: white;
+  box-sizing: border-box;
+  color-scheme: only dark;
+
+  --border-color: #ffffff22;
+  --container-bkg-color: #1c1c33;
+}
+
+body {
+  background-color: #050523;
+  padding: 2rem;
+  height: 100vh;
+}

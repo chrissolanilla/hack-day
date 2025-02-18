@@ -1,8 +1,8 @@
 ---
 general:
     name: Python'd
-    height: 0
-    width: 0
+    height: 680
+    width: 900
     in_catalog: Yes
     is_editable: Yes
     is_playable: Yes

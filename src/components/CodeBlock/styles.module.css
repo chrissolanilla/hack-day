@@ -1,0 +1,8 @@
+.codeBlock {
+  padding: 0.5rem;
+  background-color: #ffffff11;
+  border: solid 0.05rem #ffffff11;
+  border-radius: 0.5rem;
+  text-wrap: wrap;
+  color: #ffffffbb;
+}
