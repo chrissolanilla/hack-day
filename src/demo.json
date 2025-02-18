@@ -6,12 +6,12 @@
 			"items": [
 				{
 					"materiaType": "question",
-					"questions": [{ "text": ["test case 1", "blah blah", "sdfsdfsdf"] }],
+					"questions": [{ "text": ["test case 1", "blah blah", "sdfsdfsdf", "@code:"] }],
 					"type": "pythond",
 					"id": 0,
 					"answers": [
 						{
-							"text": ["1","0","1","0"],
+							"text": ["0, 1, 1, 2, 3 ,5","0","1","0"],
 							"value": 100
 						}
 					]
