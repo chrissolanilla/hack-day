@@ -1,29 +1,29 @@
 {
-	"name": "Rock Classifications",
+	"name": "Write a function that determines if a number is even or odd",
 	"qset": {
 		"version": 1,
 		"data": {
 			"items": [
 				{
 					"materiaType": "question",
-					"questions": [{ "text": "Igneous Rocks" }],
-					"type": "connections",
+					"questions": [{ "text": "test case 1" }],
+					"type": "pythond",
 					"id": 0,
 					"answers": [
 						{
-							"text": ["Quartz","Granite","Basalt","Obsidian"],
+							"text": ["1","0","1","0"],
 							"value": 100
 						}
 					]
 				},
 				{
 					"materiaType": "question",
-					"type": "connections",
+					"type": "pythond",
 					"id": 0,
-					"questions": [{ "text": "Sedimentary Rocks" }],
+					"questions": [{ "text": "test case 2" }],
 					"answers": [
 						{
-							"text": ["Sandstone","Limestone","Shale","Breccia"],
+							"text": ["0","1","0","1"],
 							"value": 100
 						}
 					]
@@ -31,11 +31,11 @@
 				{
 					"materiaType": "question",
 					"id": 0,
-					"questions": [{ "text": "Metamorphic Rocks" }],
-					"type": "connections",
+					"questions": [{ "text": "test case 3" }],
+					"type": "pythond",
 					"answers": [
 						{
-							"text": ["Marble","Gneiss","Slate","Schist"],
+							"text": ["1","1","0","0"],
 							"value": 100
 						}
 					]
