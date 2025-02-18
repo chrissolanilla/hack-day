@@ -3,7 +3,7 @@ import '@/globals.css'
 import styles from './styles.module.css'
 import Button from '../components/Button/Button'
 import Question from '../components/Question/Question'
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 interface PlayerWidgetProps {
   qset: Qset,
@@ -14,6 +14,10 @@ interface PlayerWidgetProps {
 export default function PlayerWidget({ qset, onEnd, submitQuestionForScoring }: PlayerWidgetProps) {
   const [selectedQuestion, setSelectedQuestion] = useState(0)
 
+  useEffect(() => {
+    console.log(qset.items[0])
+  }, [])
+
   // TODO replace with actual qset logic
   const qsetQuestions = ['1', '2', '3']
 
@@ -21,11 +25,11 @@ export default function PlayerWidget({ qset, onEnd, submitQuestionForScoring }: 
     return qsetQuestions.map((q, i) => (
       <Question
         key={i}
-        question={['']}
+        question={[q]}
         number={i + 1}
       />
     ))
-  }, [])
+  }, [qsetQuestions])
 
   return (
     <div className={styles.playerApp}>

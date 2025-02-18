@@ -6,7 +6,7 @@
 			"items": [
 				{
 					"materiaType": "question",
-					"questions": [{ "text": "test case 1" }],
+					"questions": [{ "text": ["test case 1", "blah blah", "sdfsdfsdf"] }],
 					"type": "pythond",
 					"id": 0,
 					"answers": [
