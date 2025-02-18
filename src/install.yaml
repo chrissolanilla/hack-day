@@ -1,6 +1,6 @@
 ---
 general:
-    name: Associations
+    name: Python'd
     height: 0
     width: 0
     in_catalog: Yes
@@ -18,7 +18,7 @@ files:
     flash_version: 0
 score:
     is_scorable: Yes
-    score_module: Associations
+    score_module: Pythond
     score_screen: scoreScreen.html
 meta_data:
     features:
