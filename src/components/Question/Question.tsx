@@ -1,15 +1,19 @@
 import styles from './styles.module.css'
 import CodeBlock from '../CodeBlock/CodeBlock'
 import { Editor, useMonaco } from '@monaco-editor/react'
-import { useEffect, useRef } from 'react'
-import Markdown from 'react-markdown';
+import { useContext, useEffect, useRef } from 'react';
+import { GameQuestionState, GameStateAction } from '../../utils/game-start-reducer'
+import { ModalContext } from '../../utils/modal-context';
+import Box from '../Box/Box';
 
 interface QuestionProps {
   question: string[],
-  number: number,
+  index: number,
+  questionState: GameQuestionState,
+  updateState: (action: GameStateAction) => void,
 }
 
-export default function Question({ question, number }: QuestionProps) {
+export default function Question({ question, index, questionState, updateState }: QuestionProps) {
   const monaco = useMonaco()
   const monacoInitialized = useRef<boolean>(false)
 
@@ -34,27 +38,34 @@ export default function Question({ question, number }: QuestionProps) {
 
   return (
     <div className={styles.questionArea}>
-      <div className={styles.questionsContainer}>
-        <h2>{`Question ${number}`}</h2>
-        {question.map((question, i) => <p key={i}>{question}</p>)}
-        <p>
-          Write some code that generates a fibonacci sequence, or something. Something that works at all. It just needs
-          to return anything. Something.
-        </p>
-        <p>
-          Anything at all works. It doesn't have to be a fibonacci sequence. It could be complete garbage. Professors
-          ever don't check the answers, anyway
-        </p>
-        <p>Here, have some example output:</p>
-        <CodeBlock>0, 1, 1, 2, 3, 5, ...</CodeBlock>
-      </div>
+      <Box extraClass={styles.questionsContainer}>
+        <h2>{`Question ${index + 1}`}</h2>
+        {/* Display/convert question text array */}
+        {question.map((question, i) => {
+          if (question.startsWith('@code:')) {
+            const codeBlockText = question.substring(6)
+            return <CodeBlock key={i}>{codeBlockText}</CodeBlock>
+          } else if (question.startsWith('@para:')) {
+            const paragraphText = question.substring(6)
+            return <p>{paragraphText}</p>
+          } else {
+            return null
+          }
+        })}
+      </Box>
 
       <div className={styles.editorContainer}>
         <Editor
           defaultLanguage="python"
-          defaultValue="# comment"
+          defaultValue="# Put your code here"
           height="100%"
           theme="default"
+          value={questionState.playerAnswer}
+          onChange={(e) => updateState({
+            do: 'updatePlayerAnswer',
+            question: index,
+            opt: { value: e },
+          })}
         />
       </div>
     </div>

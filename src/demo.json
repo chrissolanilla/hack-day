@@ -6,7 +6,7 @@
 			"items": [
 				{
 					"materiaType": "question",
-					"questions": [{ "text": ["test case 1", "blah blah", "sdfsdfsdf", "@code:"] }],
+					"questions": [{ "text": ["@para:test case 1", "@para:blah blah", "@para:sdfsdfsdf", "@code:0, 1, 1, 2, 3, 5, ..."] }],
 					"type": "pythond",
 					"id": 0,
 					"answers": [
@@ -20,7 +20,7 @@
 					"materiaType": "question",
 					"type": "pythond",
 					"id": 0,
-					"questions": [{ "text": "test case 2" }],
+					"questions": [{ "text": ["@para:Write some code that generates a fibonacci sequence, or something. Something that works at all. It just needs\nto return anything. Something.", "@para:Anything at all works. It doesn't have to be a fibonacci sequence. It could be complete garbage. Professors\never don't check the answers, anyway", "@para:Here, have some example output:", "@code:0, 1, 1, 2, 3, 5, ..."] }],
 					"answers": [
 						{
 							"text": ["0","1","0","1"],
@@ -31,7 +31,7 @@
 				{
 					"materiaType": "question",
 					"id": 0,
-					"questions": [{ "text": "test case 3" }],
+					"questions": [{ "text": ["@para:test case 3", "@para:blah blah", "@para:sdfsdfsdf", "@code:print(\"lol idk\")", "@para:sdfsd fsdfs dfsdfsdfsadfkajsd fasjkdfh jkasdfasdhfkasdfkjasdhf kjadhfkjasdhfkjasdfhk jasdfhkajsdfkajsdhfaksjdf  asdjkf asdkjfasdkf as faskf askf a fa fas fakf s sdfsd fsdfs dfsdfsdfsadfkajsd fasjkdfh jkasdfasdhfkasdfkjasdhf kjadhfkjasdhfkjasdfhk jasdfhkajsdfkajsdhfaksjdf  asdjkf asdkjfasdkf as faskf askf a fa fas fakf s sdfsd fsdfs dfsdfsdfsadfkajsd fasjkdfh jkasdfasdhfkasdfkjasdhf kjadhfkjasdhfkjasdfhk jasdfhkajsdfkajsdhfaksjdf  asdjkf asdkjfasdkf as faskf askf a fa fas fakf s sdfsd fsdfs dfsdfsdfsadfkajsd fasjkdfh jkasdfasdhfkasdfkjasdhf kjadhfkjasdhfkjasdfhk jasdfhkajsdfkajsdhfaksjdf  asdjkf asdkjfasdkf as faskf askf a fa fas fakf s sdfsd fsdfs dfsdfsdfsadfkajsd fasjkdfh jkasdfasdhfkasdfkjasdhf kjadhfkjasdhfkjasdfhk jasdfhkajsdfkajsdhfaksjdf  asdjkf asdkjfasdkf as faskf askf a fa fas fakf s sdfsd fsdfs dfsdfsdfsadfkajsd fasjkdfh jkasdfasdhfkasdfkjasdhf kjadhfkjasdhfkjasdfhk jasdfhkajsdfkajsdhfaksjdf  asdjkf asdkjfasdkf as faskf askf a fa fas fakf s sdfsd fsdfs dfsdfsdfsadfkajsd fasjkdfh jkasdfasdhfkasdfkjasdhf kjadhfkjasdhfkjasdfhk jasdfhkajsdfkajsdhfaksjdf  asdjkf asdkjfasdkf as faskf askf a fa fas fakf s sdfsd fsdfs dfsdfsdfsadfkajsd fasjkdfh jkasdfasdhfkasdfkjasdhf kjadhfkjasdhfkjasdfhk jasdfhkajsdfkajsdhfaksjdf  asdjkf asdkjfasdkf as faskf askf a fa fas fakf s sdfsd fsdfs dfsdfsdfsadfkajsd fasjkdfh jkasdfasdhfkasdfkjasdhf kjadhfkjasdhfkjasdfhk jasdfhkajsdfkajsdhfaksjdf  asdjkf asdkjfasdkf as faskf askf a fa fas fakf s sdfsd fsdfs dfsdfsdfsadfkajsd fasjkdfh jkasdfasdhfkasdfkjasdhf kjadhfkjasdhfkjasdfhk jasdfhkajsdfkajsdhfaksjdf  asdjkf asdkjfasdkf as faskf askf a fa fas fakf s sdfsd fsdfs dfsdfsdfsadfkajsd fasjkdfh jkasdfasdhfkasdfkjasdhf kjadhfkjasdhfkjasdfhk jasdfhkajsdfkajsdhfaksjdf  asdjkf asdkjfasdkf as faskf askf a fa fas fakf s sdfsd fsdfs dfsdfsdfsadfkajsd fasjkdfh jkasdfasdhfkasdfkjasdhf kjadhfkjasdhfkjasdfhk jasdfhkajsdfkajsdhfaksjdf  asdjkf asdkjfasdkf as faskf askf a fa fas fakf s sdfsd fsdfs dfsdfsdfsadfkajsd fasjkdfh jkasdfasdhfkasdfkjasdhf kjadhfkjasdhfkjasdfhk jasdfhkajsdfkajsdhfaksjdf  asdjkf asdkjfasdkf as faskf askf a fa fas fakf s"] }],
 					"type": "pythond",
 					"answers": [
 						{

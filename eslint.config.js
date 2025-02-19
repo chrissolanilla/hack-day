@@ -54,6 +54,7 @@ export default [
           multilineDetection: 'brackets',
         },
       ],
+      'no-unused-vars': 'off',
     },
   },
 ]

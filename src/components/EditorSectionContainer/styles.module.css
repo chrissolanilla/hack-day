@@ -1,0 +1,31 @@
+.sectionContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.sectionRight {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 100%;
+}
+
+.sectionHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  & h3 {
+    font-size: 0.85rem;
+    color: #ffffffaa;
+  }
+}
+
+.runningLine {
+  width: 0.1rem;
+  background-color: #ffffff44;
+  border-radius: 100rem;
+}

@@ -19,7 +19,7 @@ player groups words that belong to the same group.
 
 Depending on the size of the grid, the player is informed in the beginning to select words in groups of X Y times.
 The dimensions of the grid being X and Y are set by the creator. Usually, the player will
-have lives/attempts equal to the maximum number of X or Y, however the creator can adjust this.
+have lives/attempts equal to the maximum index of X or Y, however the creator can adjust this.
 
 ![Connections Player](assets/player_guide_2.png 'Connections Player')
 

@@ -1,9 +1,16 @@
-import { Qset } from '../types/qset'
+import { Qset } from '../utils/qset'
 import '@/globals.css'
-import styles from './styles.module.css'
+import playerStyles from './styles.module.css'
+import appStyles from '../app.module.css'
 import Button from '../components/Button/Button'
 import Question from '../components/Question/Question'
-import { useEffect, useMemo, useState } from 'react';
+import { ReactNode, useCallback, useMemo, useReducer, useState } from 'react'
+import {
+  createInitialGameState,
+  GameStateReducer,
+} from '../utils/game-start-reducer'
+import { ModalContext } from '../utils/modal-context'
+import Modal from '../components/Modal/Modal'
 
 interface PlayerWidgetProps {
   qset: Qset,
@@ -12,50 +19,87 @@ interface PlayerWidgetProps {
 }
 
 export default function PlayerWidget({ qset, onEnd, submitQuestionForScoring }: PlayerWidgetProps) {
+  const [gameState, dispatch] = useReducer(GameStateReducer, createInitialGameState(qset.items))
   const [selectedQuestion, setSelectedQuestion] = useState(0)
+  const [modal, setModal] = useState<ReactNode | null>(null)
 
-  useEffect(() => {
-    console.log(qset.items[0])
-  }, [])
+  // On submit game
+  const submitGame = useCallback(() => {
+    qset.items.forEach((item, index) => {
+      submitQuestionForScoring(item.id, gameState.questions[index].playerAnswer, '100') // TODO is 100 right???
+    })
+    onEnd()
+  }, [qset, gameState])
 
-  // TODO replace with actual qset logic
-  const qsetQuestions = ['1', '2', '3']
-
+  // Create set of question components
+  // TODO add check to make sure questions[0] exists
   const questionComponents = useMemo(() => {
-    return qsetQuestions.map((q, i) => (
+    return qset.items.map((qsetItem, i) => (
       <Question
         key={i}
-        question={[q]}
-        number={i + 1}
+        question={qsetItem.questions[0].text}
+        index={i}
+        questionState={gameState.questions[i]}
+        updateState={dispatch}
       />
     ))
-  }, [qsetQuestions])
+  }, [qset.items, gameState])
+
+  // Open submit modal
+  const openSubmitModal = useCallback(() => {
+    setModal(
+      <Modal>
+        <h2>Submit Answers?</h2>
+        <p>Are you sure you want to submit your answers? You have not looked at 2 questions still.</p>
+        <div className={playerStyles.submitModalButtons}>
+          <Button onClick={() => setModal(null)}>Go Back</Button>
+          <Button onClick={submitGame}>
+            Submit Answers
+          </Button>
+        </div>
+      </Modal>,
+    )
+  }, [])
 
   return (
-    <div className={styles.playerApp}>
-      <nav className={styles.header}>
-        <h1>Python'd</h1>
+    <ModalContext.Provider value={setModal}>
+      <div className={appStyles.app}>
+        <nav className={appStyles.header}>
+          <h1>Python'd</h1>
 
-        <div className={styles.questionButtons}>
-          {qsetQuestions.map((q, i) => {
-            const active = i === selectedQuestion
-            const label = active ? `Question ${i + 1}` : i + 1
-            return (
-              <Button
-                size="md"
-                active={active}
-                onClick={() => setSelectedQuestion(i)}
-              >
-                {label}
-              </Button>
-            )
-          })}
+          <div className={appStyles.questionButtons}>
+            {qset.items.map((_, index) => {
+              const active = index === selectedQuestion
+              const label = active ? `Question ${index + 1}` : index + 1
+              return (
+                <Button
+                  size="md"
+                  active={active}
+                  onClick={() => setSelectedQuestion(index)}
+                >
+                  {label}
+                </Button>
+              )
+            })}
+          </div>
+
+          <Button
+            postIcon="/assets/arrow-forward.svg"
+            onClick={openSubmitModal}
+          >
+            Submit
+          </Button>
+        </nav>
+
+        {questionComponents[selectedQuestion]}
+      </div>
+
+      {/* Modal */}
+      {modal && (
+        <div className={appStyles.modalBkg}>
+          {modal}
         </div>
-
-        <Button postIcon="/assets/arrow-forward.svg">Submit</Button>
-      </nav>
-
-      {questionComponents[selectedQuestion]}
-    </div>
+      )}
+    </ModalContext.Provider>
   )
 }

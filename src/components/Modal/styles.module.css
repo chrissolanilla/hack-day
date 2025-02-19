@@ -1,0 +1,17 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-width: 10rem;
+  max-width: 60%;
+  background-color: var(--container-bkg-color);
+  border: solid 0.05rem var(--border-color);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  animation: 0.25s modalIntro forwards var(--bounce-timing);
+}
+
+@keyframes modalIntro {
+  from { transform: scale(0.75); }
+  to { transform: scale(1); }
+}

@@ -16,7 +16,7 @@ for incorrect connections at the score screen if desired.
 1. Widget title
 2. Show feedback for incorrect answers on score screen
 3. Lives/Attempts input
-4. Grid size. A grid size of X by Y means that there will be X amount of words per group, and Y number of groups
+4. Grid size. A grid size of X by Y means that there will be X amount of words per group, and Y index of groups
 5. Description input. This is description is what describes the relationship between the words. You can not have duplicate descriptions.
 6. Word inputs. You can put multiple words in a single input such as a phrase like "I'm loving it". You can not have duplicate inputs.
 7. Duplicate question error text. If you have a duplicate question, it will be shown under the word.
@@ -26,7 +26,7 @@ Upon initializing the creator, you will be prompted to provide a title for your 
 to the grid.
 
 Remember to set how many lives the player will have in the Lives input(3). By default the player will have only one life if there is no input.
-A good rule of thumb for choosing how many lives the player should have is that they should have at minimum the biggest number out of the X by Y grid.
+A good rule of thumb for choosing how many lives the player should have is that they should have at minimum the biggest index out of the X by Y grid.
 
 <div style="text-align: center;">
     <img src="assets/creator_guide_2.png" alt="Connections Creator" style="width: 600px;">

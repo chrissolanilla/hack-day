@@ -1,0 +1,25 @@
+.editorArea {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+}
+
+.editorBox {
+  width: 50%;
+}
+
+.questionHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.addContentButtons {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  width: 100%;
+}

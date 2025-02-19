@@ -1,0 +1,12 @@
+.box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border: solid 0.05rem var(--border-color);
+  border-radius: 0.5rem;
+  background-color: var(--container-bkg-color);
+  padding: 1rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #ffffff44 transparent;
+}

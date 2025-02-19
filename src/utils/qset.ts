@@ -13,11 +13,15 @@ export interface QsetItem {
 }
 
 type QsetQuestion = {
-  text: string,
+  text: string[],
 }
 
 type QsetAnswer = {
-  text: string,
+  text: string[],
   value: number,
-  options: unknown,
+  options: QsetAnswerOption,
+}
+
+type QsetAnswerOption = {
+  inputs: string[],
 }
