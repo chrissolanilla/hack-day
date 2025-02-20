@@ -3,6 +3,10 @@
   flex-direction: column;
   gap: 0.25rem;
   font-size: 0.85rem;
+  width: 15rem;
+}
+
+.fill {
   flex: 1;
 }
 

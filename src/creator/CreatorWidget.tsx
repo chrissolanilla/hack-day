@@ -6,6 +6,8 @@ import Button from '../components/Button/Button'
 import { ReactNode, useCallback, useMemo, useState } from 'react'
 import QuestionEditor from '../components/QuestionEditor/QuestionEditor'
 import { EditorQuestion, QuestionContent } from '../utils/editorQuestion'
+import { convertToInternal, convertToQset } from '../utils/saver'
+import LabelledInput from '../components/LabelledInput/LabelledInput';
 
 interface CreatorWidgetProps {
   title: string | null,
@@ -17,42 +19,9 @@ interface CreatorWidgetProps {
 export default function CreatorWidget({ title, qset, updateTitle, registerSaver }: CreatorWidgetProps) {
   const [modal, setModal] = useState<ReactNode | null>(null)
   const [selectedQuestion, setSelectedQuestion] = useState(0)
+  const [widgetTitle, setWidgetTitle] = useState('My Python\'d Widget')
 
-  const [questions, setQuestions] = useState<EditorQuestion[]>(() => {
-    // Generate initial set of questions from qset
-    if (!qset?.items) return [{ // Create an initial set if the qset is empty
-      content: [{ type: 'para', val: '' }],
-      inputs: [''],
-      outputs: [''],
-    }]
-
-    return qset.items.map((item) => {
-      // Convert each qset item to EditorQuestion item
-      const question = item.questions[0]
-      const answers = item.answers[0]
-
-      // Convert question contents
-      const questionContents = question.text.map<QuestionContent>((rawQuestion) => {
-        const trimmedText = rawQuestion.substring(6)
-        if (rawQuestion.startsWith('@para:'))
-          return { type: 'para', val: trimmedText }
-        else if (rawQuestion.startsWith('@code:'))
-          return { type: 'code', val: trimmedText }
-        else return null
-      }).filter((q) => !!q) // Filter out null
-
-      // Convert inputs and outputs
-      const questionInputs = answers.text.map((a) => a.input)
-      const questionOutputs = answers.text.map((a) => a.output)
-
-      // Construct final object
-      return {
-        content: questionContents,
-        inputs: questionInputs,
-        outputs: questionOutputs,
-      }
-    })
-  })
+  const [questions, setQuestions] = useState<EditorQuestion[]>(() => convertToInternal(qset))
 
   // Create new question
   const createQuestion = useCallback(() => {
@@ -97,6 +66,12 @@ export default function CreatorWidget({ title, qset, updateTitle, registerSaver 
     })
   }, [questions])
 
+  // Register saver with materia
+  registerSaver(() => {
+    updateTitle('lol')
+    return convertToQset(questions)
+  })
+
   return (
     <ModalContext.Provider value={setModal}>
       <div className={appStyles.app}>
@@ -113,6 +88,7 @@ export default function CreatorWidget({ title, qset, updateTitle, registerSaver 
                   size="md"
                   active={active}
                   onClick={() => setSelectedQuestion(index)}
+                  key={index}
                 >
                   {label}
                 </Button>
@@ -122,9 +98,11 @@ export default function CreatorWidget({ title, qset, updateTitle, registerSaver 
             <Button size="md" onClick={createQuestion}>+</Button>
           </div>
 
-          <Button>
-            Save
-          </Button>
+          <LabelledInput
+            label="Widget Title"
+            value={widgetTitle}
+            onUpdate={setWidgetTitle}
+          />
         </nav>
 
         {questionEditorComponents[selectedQuestion]}

@@ -57,9 +57,9 @@ export default function QuestionEditor({ question, updateContent, updateAnswer, 
         {/* Existing content */}
         {content.map((c, i) => {
           if (c.type === 'code') {
-            // TODO add keys but dont use index
+            // TODO keys probably shoudln't be the index. but we don't have any other sort of ID for now
             return (
-              <EditorSectionContainer label="Code" onDelete={() => deleteBlock(i)}>
+              <EditorSectionContainer key={i} label="Code" onDelete={() => deleteBlock(i)}>
                 <CodeBlockEditor
                   value={c.val}
                   onChange={(newVal) => {
@@ -71,8 +71,9 @@ export default function QuestionEditor({ question, updateContent, updateAnswer, 
               </EditorSectionContainer>
             )
           } else if (c.type === 'para') {
+            // TODO keys probably shoudln't be the index. but we don't have any other sort of ID for now
             return (
-              <EditorSectionContainer label="Paragraph" onDelete={() => deleteBlock(i)}>
+              <EditorSectionContainer key={i} label="Paragraph" onDelete={() => deleteBlock(i)}>
                 <ParagraphEditor
                   value={c.val}
                   onChange={(newVal) => {
@@ -110,7 +111,7 @@ export default function QuestionEditor({ question, updateContent, updateAnswer, 
         <h2>Test Cases</h2>
 
         {question.inputs.map((input, index) => {
-          // TODO add non-index key
+          // TODO keys probably shoudln't be the index. but we don't have any other sort of ID for now
           return (
             <TestCase
               input={input}
@@ -127,6 +128,7 @@ export default function QuestionEditor({ question, updateContent, updateAnswer, 
               }}
               onDelete={() => deleteTestCase(index)}
               index={index}
+              key={index}
             />
           )
         })}

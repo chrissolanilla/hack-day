@@ -25,8 +25,8 @@ export default function TestCase({ index, input, output, updateInput, updateOutp
       </div>
       <div className={styles.inputsContainer}>
         <div className={styles.inputs}>
-          <LabelledInput label="Input" value={input} onUpdate={updateInput} />
-          <LabelledInput label="Expected Output" value={output} onUpdate={updateOutput} />
+          <LabelledInput label="Input" value={input} onUpdate={updateInput} fill />
+          <LabelledInput label="Expected Output" value={output} onUpdate={updateOutput} fill />
         </div>
       </div>
     </div>

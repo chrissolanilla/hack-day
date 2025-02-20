@@ -1,10 +1,9 @@
 import styles from './styles.module.css'
 import CodeBlock from '../CodeBlock/CodeBlock'
 import { Editor, useMonaco } from '@monaco-editor/react'
-import { useContext, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { GameQuestionState, GameStateAction } from '../../utils/game-start-reducer'
-import { ModalContext } from '../../utils/modal-context';
-import Box from '../Box/Box';
+import Box from '../Box/Box'
 
 interface QuestionProps {
   question: string[],

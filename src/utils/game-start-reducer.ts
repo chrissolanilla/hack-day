@@ -11,15 +11,19 @@ export type GameState = {
 export type GameStateAction = {
   do: 'updatePlayerAnswer' | 'markSeen',
   question: number,
-  opt: unknown,
+  opt?: unknown,
 }
 
 export function createInitialGameState(qsetItems: QsetItem[]): GameState {
-  return {
+  const result = {
     questions: qsetItems.map(() => {
       return { playerAnswer: '', seen: false }
     }),
   }
+
+  if (result.questions[0])
+    result.questions[0].seen = true // first question is always seen
+  return result
 }
 
 export function GameStateReducer(state: GameState, action: GameStateAction): GameState {

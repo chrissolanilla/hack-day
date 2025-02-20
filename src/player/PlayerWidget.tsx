@@ -26,7 +26,8 @@ export default function PlayerWidget({ qset, onEnd, submitQuestionForScoring }: 
   // On submit game
   const submitGame = useCallback(() => {
     qset.items.forEach((item, index) => {
-      submitQuestionForScoring(item.id, gameState.questions[index].playerAnswer, '100') // TODO is 100 right???
+      console.log(`SUBMITTING ${gameState.questions[index].playerAnswer}`)
+      submitQuestionForScoring(item.id.toString(), gameState.questions[index].playerAnswer, '100')
     })
     onEnd()
   }, [qset, gameState])
@@ -47,10 +48,19 @@ export default function PlayerWidget({ qset, onEnd, submitQuestionForScoring }: 
 
   // Open submit modal
   const openSubmitModal = useCallback(() => {
+    // Find out how many questions were not looked at
+    const notLookedAt = gameState.questions.filter((q) => !q.seen)
+    const s = notLookedAt.length === 1 ? '' : 's'
+
     setModal(
       <Modal>
         <h2>Submit Answers?</h2>
-        <p>Are you sure you want to submit your answers? You have not looked at 2 questions still.</p>
+        <p>Are you sure you want to submit your answers?</p>
+        {notLookedAt.length > 0 && (
+          <p>
+            {`You have not looked at ${notLookedAt.length} question${s} still.`}
+          </p>
+        )}
         <div className={playerStyles.submitModalButtons}>
           <Button onClick={() => setModal(null)}>Go Back</Button>
           <Button onClick={submitGame}>
@@ -59,7 +69,7 @@ export default function PlayerWidget({ qset, onEnd, submitQuestionForScoring }: 
         </div>
       </Modal>,
     )
-  }, [])
+  }, [submitGame])
 
   return (
     <ModalContext.Provider value={setModal}>
@@ -75,7 +85,10 @@ export default function PlayerWidget({ qset, onEnd, submitQuestionForScoring }: 
                 <Button
                   size="md"
                   active={active}
-                  onClick={() => setSelectedQuestion(index)}
+                  onClick={() => {
+                    dispatch({ do: 'markSeen', question: index })
+                    setSelectedQuestion(index)
+                  }}
                 >
                   {label}
                 </Button>

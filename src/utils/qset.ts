@@ -1,15 +1,13 @@
 export interface Qset {
   items: QsetItem[],
-  options: unknown,
 }
 
 export interface QsetItem {
-  id: string,
+  id: string | number,
   materiaType: string,
   type: string,
   questions: QsetQuestion[],
   answers: QsetAnswer[],
-  options: unknown,
 }
 
 type QsetQuestion = {
