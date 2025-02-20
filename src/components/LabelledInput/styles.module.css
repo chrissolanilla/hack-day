@@ -1,0 +1,22 @@
+.labelledInputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+  flex: 1;
+}
+
+.labelledInput {
+  padding: 0.5rem;
+  background-color: #ffffff11;
+  border: solid 0.05rem #ffffff11;
+  border-radius: 0.5rem;
+  text-wrap: wrap;
+  color: #ffffff;
+  transition: border-color 0.1s;
+
+  &:focus {
+    outline: none;
+    border-color: #ffffff66;
+  }
+}

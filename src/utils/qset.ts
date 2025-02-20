@@ -17,11 +17,6 @@ type QsetQuestion = {
 }
 
 type QsetAnswer = {
-  text: string[],
+  text: { input: string, output: string }[],
   value: number,
-  options: QsetAnswerOption,
-}
-
-type QsetAnswerOption = {
-  inputs: string[],
 }

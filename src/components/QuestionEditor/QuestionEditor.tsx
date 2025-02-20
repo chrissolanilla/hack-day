@@ -6,15 +6,17 @@ import CodeBlockEditor from '../CodeBlock/CodeBlockEditor'
 import { EditorQuestion, QuestionContent } from '../../utils/editorQuestion'
 import ParagraphEditor from '../ParagraphEditor/ParagraphEditor'
 import EditorSectionContainer from '../EditorSectionContainer/EditorSectionContainer'
+import TestCase from '../TestCase/TestCase'
 
 interface QuestionEditorProps {
   question: EditorQuestion,
   updateContent: (newContent: QuestionContent[]) => void,
+  updateAnswer: (newInputs: string[], newOutputs: string[]) => void,
   onDelete: () => void,
   index: number,
 }
 
-export default function QuestionEditor({ question, updateContent, onDelete, index }: QuestionEditorProps) {
+export default function QuestionEditor({ question, updateContent, updateAnswer, onDelete, index }: QuestionEditorProps) {
   const content = question.content
 
   // Content adders
@@ -29,6 +31,20 @@ export default function QuestionEditor({ question, updateContent, onDelete, inde
   const deleteBlock = useCallback((index: number) => {
     updateContent([...content.slice(0, index), ...content.slice(index + 1)])
   }, [content])
+
+  // Test case utils
+  const addTestCase = useCallback(() => {
+    updateAnswer(
+      [...question.inputs, ''], [...question.outputs, ''],
+    )
+  }, [question])
+
+  const deleteTestCase = useCallback((index: number) => {
+    updateAnswer(
+      [...question.inputs.slice(0, index), ...question.inputs.slice(index + 1)],
+      [...question.outputs.slice(0, index), ...question.outputs.slice(index + 1)],
+    )
+  }, [question])
 
   return (
     <div className={styles.editorArea}>
@@ -92,6 +108,36 @@ export default function QuestionEditor({ question, updateContent, onDelete, inde
       </Box>
       <Box extraClass={styles.editorBox}>
         <h2>Test Cases</h2>
+
+        {question.inputs.map((input, index) => {
+          // TODO add non-index key
+          return (
+            <TestCase
+              input={input}
+              output={question.outputs[index]}
+              updateInput={(newVal) => {
+                const newInputs = [...question.inputs]
+                newInputs[index] = newVal
+                updateAnswer(newInputs, question.outputs)
+              }}
+              updateOutput={(newVal) => {
+                const newOuts = [...question.outputs]
+                newOuts[index] = newVal
+                updateAnswer(question.inputs, newOuts)
+              }}
+              onDelete={() => deleteTestCase(index)}
+              index={index}
+            />
+          )
+        })}
+
+        <Button
+          fill
+          popupEffect="reduced"
+          onClick={addTestCase}
+        >
+          Add test case
+        </Button>
       </Box>
     </div>
 

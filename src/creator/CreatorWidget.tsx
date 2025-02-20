@@ -20,11 +20,16 @@ export default function CreatorWidget({ title, qset, updateTitle, registerSaver 
 
   const [questions, setQuestions] = useState<EditorQuestion[]>(() => {
     // Generate initial set of questions from qset
-    if (!qset?.items) return []
+    if (!qset?.items) return [{ // Create an initial set if the qset is empty
+      content: [{ type: 'para', val: '' }],
+      inputs: [''],
+      outputs: [''],
+    }]
 
     return qset.items.map((item) => {
       // Convert each qset item to EditorQuestion item
       const question = item.questions[0]
+      const answers = item.answers[0]
 
       // Convert question contents
       const questionContents = question.text.map<QuestionContent>((rawQuestion) => {
@@ -36,11 +41,15 @@ export default function CreatorWidget({ title, qset, updateTitle, registerSaver 
         else return null
       }).filter((q) => !!q) // Filter out null
 
+      // Convert inputs and outputs
+      const questionInputs = answers.text.map((a) => a.input)
+      const questionOutputs = answers.text.map((a) => a.output)
+
       // Construct final object
       return {
         content: questionContents,
-        inputs: [],
-        outputs: [],
+        inputs: questionInputs,
+        outputs: questionOutputs,
       }
     })
   })
@@ -74,6 +83,12 @@ export default function CreatorWidget({ title, qset, updateTitle, registerSaver 
           updateContent={(newContent) => {
             const newQuestions = [...questions]
             newQuestions[index].content = newContent
+            setQuestions(newQuestions)
+          }}
+          updateAnswer={(newInputs, newOutputs) => {
+            const newQuestions = [...questions]
+            newQuestions[index].inputs = newInputs
+            newQuestions[index].outputs = newOutputs
             setQuestions(newQuestions)
           }}
           onDelete={() => deleteQuestion(index)}

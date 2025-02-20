@@ -1,14 +1,18 @@
 .sectionContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 0.5rem;
   width: 100%;
+  padding: 0.5rem 1rem 1rem 1rem;
+  border: solid 0.05rem var(--border-color);
+  border-radius: 0.5rem;
+  background-color: #ffffff06;
 }
 
-.sectionRight {
+.sectionBottom {
   display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+  flex-direction: row;
+  gap: 0.5rem;
   width: 100%;
 }
 
@@ -22,10 +26,4 @@
     font-size: 0.85rem;
     color: #ffffffaa;
   }
-}
-
-.runningLine {
-  width: 0.1rem;
-  background-color: #ffffff44;
-  border-radius: 100rem;
 }

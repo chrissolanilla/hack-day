@@ -8,6 +8,7 @@
 
 .editorBox {
   width: 50%;
+  gap: 1rem !important;
 }
 
 .questionHeader {
